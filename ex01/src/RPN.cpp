@@ -6,23 +6,23 @@
 /*   By: seozkan < seozkan@student.42kocaeli.com.tr +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 22:45:36 by seozkan           #+#    #+#             */
-/*   Updated: 2024/05/05 13:03:48 by seozkan          ###   ########.fr       */
+/*   Updated: 2024/05/06 22:55:54 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/RPN.hpp"
 
-RPN::RPN() {}
-RPN::~RPN() {}
-RPN::RPN(const RPN &){}
-RPN &RPN::operator=(const RPN &){return *this;}
+Rpn::Rpn() {}
+Rpn::~Rpn() {}
+Rpn::Rpn(const Rpn &) {}
+Rpn &Rpn::operator=(const Rpn &) { return *this; }
 
-bool RPN::isOperator(char token)
+bool Rpn::isOperator(char token)
 {
     return token == '+' or token == '-' or token == '*' or token == '/';
 }
 
-void RPN::calculate(char const *argv[])
+void Rpn::calculate(char const *argv[])
 {
     std::istringstream ss(argv[1]);
     std::stack<int> intStack;

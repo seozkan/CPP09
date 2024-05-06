@@ -6,7 +6,7 @@
 /*   By: seozkan < seozkan@student.42kocaeli.com.tr +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 11:28:33 by seozkan           #+#    #+#             */
-/*   Updated: 2024/05/05 12:53:37 by seozkan          ###   ########.fr       */
+/*   Updated: 2024/05/06 22:57:09 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,7 @@ public:
         {
             int mid = (start + end) / 2;
             if (end - start + 1 <= 10)
-            {
                 insertionSort(container, start, end);
-            }
             else
             {
                 MergeInsertionSort(container, start, mid);

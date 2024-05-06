@@ -6,7 +6,7 @@
 /*   By: seozkan < seozkan@student.42kocaeli.com.tr +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 22:45:38 by seozkan           #+#    #+#             */
-/*   Updated: 2024/05/05 13:02:45 by seozkan          ###   ########.fr       */
+/*   Updated: 2024/05/06 22:55:14 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include <sstream>
 #include <stack>
 
-class RPN
+class Rpn
 {
 public:
-    RPN();
-    RPN(const RPN &);
-    RPN &operator=(const RPN &);
-    ~RPN();
+    Rpn();
+    Rpn(const Rpn &);
+    Rpn &operator=(const Rpn &);
+    ~Rpn();
 
     bool isOperator(char token);
     void calculate(char const *argv[]);
