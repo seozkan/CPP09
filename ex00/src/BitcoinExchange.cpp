@@ -13,7 +13,6 @@ std::map<std::string, double> BitcoinExchange::readData()
         throw std::runtime_error("Error: Data.csv file not found!");
     std::string line;
     std::getline(file, line);
-    float counter = 0;
     while (std::getline(file, line))
     {
         std::stringstream ss(line);
@@ -21,9 +20,7 @@ std::map<std::string, double> BitcoinExchange::readData()
         std::getline(ss, date, ',');
         std::getline(ss, rate, ',');
         csv[date] = std::atof(rate.c_str());
-        counter++;
     }
-    csv["counter"] = counter;
     return csv;
 }
 
@@ -61,21 +58,27 @@ void BitcoinExchange::checkInput(char *file, std::map<std::string, double> data)
     inputFile.close();
 }
 
+std::string BitcoinExchange::getLowDate()
+{
+    std::ifstream file("data.csv");
+    std::string line;
+    if (!file)
+        throw std::runtime_error("Error: Data.csv file not found!");
+    std::getline(file, line);
+    std::getline(file, line);
+    return (line);
+}
+
 double BitcoinExchange::findRate(std::string date, std::map<std::string, double> data)
 {
     std::map<std::string, double>::iterator it;
-    float counter = data["counter"];
 
-    while (counter > 0) 
-    {
-        it = data.find(date);
-        if (it != data.end())
-            return it->second;
-        else
-            date = moveDateBackOneDay(date);
-        counter--;
-    }
-    return 0;
+    if (date < getLowDate())
+        return 0;
+    it = data.find(date);
+    if (it != data.end())
+        return it->second;
+    return findRate(moveDateBackOneDay(date), data);
 }
 
 std::string BitcoinExchange::intToString(int value)
