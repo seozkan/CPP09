@@ -68,6 +68,6 @@ void PmergeMe::exec()
     printVec("After: ");
     double timeVec = (double(endVec - startVec) / CLOCKS_PER_SEC);
     double timeDeq = (double(endDeq - startDeq) / CLOCKS_PER_SEC);
-    std::cout << "Time to process a range of " << intVec.size() << " elements with std::vec container: " << std::fixed << std::setprecision(6) << timeVec << " us" << std::endl;
-    std::cout << "Time to process a range of " << intDeque.size() << " elements with std::deque container: " << std::fixed << std::setprecision(6) << timeDeq << " us" << std::endl;
+    std::cout << "Time to process a range of " << intVec.size() << " elements with std::vec: " << std::fixed << std::setprecision(6) << timeVec << " us" << std::endl;
+    std::cout << "Time to process a range of " << intDeque.size() << " elements with std::deq: " << std::fixed << std::setprecision(6) << timeDeq << " us" << std::endl;
 }
