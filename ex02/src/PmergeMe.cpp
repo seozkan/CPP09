@@ -57,17 +57,17 @@ void PmergeMe::printVec(std::string text)
 
 void PmergeMe::exec()
 {
+    clock_t startVec, startDeq, endVec, endDeq;
     printVec("Before: ");
-    timespec startVec, endVec, startDeq, endDeq;
-    clock_gettime(CLOCK_MONOTONIC, &startVec);
+    startVec = clock();
     MergeInsertionSort(intVec, 0, intVec.size() - 1);
-    clock_gettime(CLOCK_MONOTONIC, &endVec);
-    clock_gettime(CLOCK_MONOTONIC, &startDeq);
+    endVec = clock();
+    startDeq = clock();
     MergeInsertionSort(intDeque, 0, intDeque.size() - 1);
-    clock_gettime(CLOCK_MONOTONIC, &endDeq);
+    endDeq = clock();
     printVec("After: ");
-    double timeVec = (endVec.tv_sec - startVec.tv_sec) * 1e3 + (endVec.tv_nsec - startVec.tv_nsec) / 1e6;
-    double timeDeq = (endDeq.tv_sec - startDeq.tv_sec) * 1e3 + (endDeq.tv_nsec - startDeq.tv_nsec) / 1e6;
-    std::cout << "Time to process a range of " << intVec.size() << " elements with std::vec container: " << timeVec << " us" << std::endl;
-    std::cout << "Time to process a range of " << intDeque.size() << " elements with std::deque container: " << timeDeq << " us" << std::endl;
+    double timeVec = (double(endVec - startVec) / CLOCKS_PER_SEC);
+    double timeDeq = (double(endDeq - startDeq) / CLOCKS_PER_SEC);
+    std::cout << "Time to process a range of " << intVec.size() << " elements with std::vec container: " << std::fixed << std::setprecision(6) << timeVec << " us" << std::endl;
+    std::cout << "Time to process a range of " << intDeque.size() << " elements with std::deque container: " << std::fixed << std::setprecision(6) << timeDeq << " us" << std::endl;
 }
